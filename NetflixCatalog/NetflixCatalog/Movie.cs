@@ -9,23 +9,17 @@ namespace NetflixCatalog
     class Movie:Title
     {
         int? duration;
-        public Movie() 
-        {
-            duration = null;
-        }
-        public Movie(string name, double rating, GenreType genreType, int duration) : base (name, rating, genreType)
+        public Movie(string name, double rating, GenreType genreType, int duration) 
+            : base (name, rating, genreType)
         {
             _name = name;
             _rating = rating;
             _genreType = genreType;
             this.duration = duration;
         }
-
         public override string ToString()
         {
-            string showNameAndNumberOfEpisodes =
-              "{0}, {duration} minutes", _name, duration;
-            return showNameAndNumberOfEpisodes;
+            return string.Format("{0}, {1} minutes", _name, duration);
         }
     }
 }

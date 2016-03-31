@@ -8,7 +8,55 @@ namespace NetflixCatalog
 {
     class TemporaryTitleList
     {
-        Movie dieHard = new Movie("Die Hard", 2, Title.GenreType.Action, 120);
+        //movies
+        public Movie dieHard = new Movie("Die Hard", 2, Title.GenreType.Action, 120);
+        public Movie dieHard2 = new Movie("Die Hard 2", 3, Title.GenreType.Action, 120);
+        public Movie officeSpace = new Movie("Office Space", 5, Title.GenreType.Comedy, 90);
+        public Movie notebook = new Movie("The Notebook", 3, Title.GenreType.Romance, 400);
+
+        //shows
+        public Show theOffice = new Show("The Office", 5, Title.GenreType.Comedy);
+        public Show greys = new Show("Grey's Anatomy", 1, Title.GenreType.Romance);
+        public Show daredevil = new Show("Daredevil", 5, Title.GenreType.Action);
+
+        //episodes
+        public Episode office1 = new Episode(4, "Epi One");
+        public Episode office2 = new Episode(3, "Epi Two");
+        public Episode office3 = new Episode(5, "Epi Three");
+
+        public Episode grey1 = new Episode(1, "Epi One");
+        public Episode grey2 = new Episode(1, "Epi Two");
+        public Episode grey3 = new Episode(2, "Epi Three");
+
+        public Episode dare1 = new Episode(2, "Epi One");
+        public Episode dare2 = new Episode(3, "Epi Two");
+        public Episode dare3 = new Episode(5, "Epi Three");
+
+        public Genre<Title> romance = new Genre<Title>(Genre<Title>.CombinedGenreType.Romance);
+        public Genre<Title> action = new Genre<Title>(Genre<Title>.CombinedGenreType.Action);
+        public Genre<Title> romaction = new Genre<Title>(Genre<Title>.CombinedGenreType.Romaction);
+        public Genre<Title> comedy = new Genre<Title>(Genre<Title>.CombinedGenreType.Comedy);
+        public Genre<Title> romcom = new Genre<Title>(Genre<Title>.CombinedGenreType.RomCom);
+        public Genre<Title> comaction = new Genre<Title>(Genre<Title>.CombinedGenreType.ComAction);
+        public Genre<Title> all = new Genre<Title>(Genre<Title>.CombinedGenreType.All);
+
+        public TemporaryTitleList()
+        {
+        }
+        //adding episodes to shows
+        public void AddShows()
+        {
+            theOffice.AddEpisode(office1);
+            theOffice.AddEpisode(office2);
+            theOffice.AddEpisode(office3);
+            greys.AddEpisode(grey1);
+            greys.AddEpisode(grey2);
+            greys.AddEpisode(grey3);
+            daredevil.AddEpisode(dare1);
+            daredevil.AddEpisode(dare2);
+            daredevil.AddEpisode(dare3);
+        }
+
 
     }
 }

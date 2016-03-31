@@ -10,12 +10,23 @@ namespace NetflixCatalog
     {
         static void Main(string[] args)
         {
-            Movie movie = new Movie();
-            Genre<Movie> genre = new Genre<Movie>(movie);
-            foreach (Movie newMovie in genre)
-            {
-                Console.WriteLine("Hello");
-            }
+            TemporaryTitleList thing = new TemporaryTitleList();
+            thing.AddShows();
+            Console.WriteLine(thing.dieHard.ToString());
+            Console.ReadLine();
+
+
+
+
+
+
+            //Genre<Movie> action = new Genre<Movie>();
+            // Genre<Movie> comedy = new Genre<Movie>();
+            // Genre<Movie> romance = new Genre<Movie>();
+            //foreach (Movie newMovie in action)
+           // {
+             //   Console.WriteLine("Hello");
+           // }
         }
     }
 }
