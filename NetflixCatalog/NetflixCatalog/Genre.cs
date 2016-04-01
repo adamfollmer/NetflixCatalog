@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace NetflixCatalog
 {
-    class Genre<T> : IEnumerable<T>
+    public class Genre : IEnumerable
     {
-        public List<T> titleList;
-        CombinedGenreType combinedGenreType;
+        public List<Title> titleList;
+        CombinedGenreType combinedGenre;
         public enum CombinedGenreType
         {
             Null = 0,
@@ -24,33 +24,97 @@ namespace NetflixCatalog
         }
         public Genre(CombinedGenreType genreType)
         {
-            titleList = new List<T>();
-            combinedGenreType = genreType;
+            titleList = new List<Title>();
+            combinedGenre = genreType;
         }
-        public void AddTitles(T titleToAdd)
+        public CombinedGenreType CombinedGenre
+        {
+            get { return combinedGenre; }
+        }
+        public void AddTitles(Title titleToAdd)
         {
             titleList.Add(titleToAdd);
         }
-        public IEnumerator<T> GetEnumerator()
+        public IEnumerator GetEnumerator()
         {
-            foreach (T title in titleList)
+            foreach (Title title in titleList)
             {
                 yield return title;
             }
         }
-        IEnumerator IEnumerable.GetEnumerator()//fuck this guy
+        public static Genre operator+ (Genre genreOne, Genre genreTwo)
         {
-            throw new NotImplementedException();
-        }
-        public static Genre<T> operator +(Genre<T> genreOne, Genre<T> genreTwo)
-        {
-            if (genreOne.combinedGenreType.Equals(genreTwo.combinedGenreType))
+            int genreHold;
+            if (genreOne.combinedGenre == genreTwo.combinedGenre)
             {
-                return new Genre<T>(genreOne.combinedGenreType);
+                genreHold = (int)genreOne.combinedGenre;
             }
-            int combinedGenreType = (int)genreOne.combinedGenreType + (int)genreTwo.combinedGenreType;
-
-
+            else
+            {
+                genreHold = (int)genreOne.combinedGenre + (int)genreTwo.combinedGenre;
+            }
+            return new Genre((Genre.CombinedGenreType)genreHold);
         }
+        public static Genre operator+ (Genre genre, Title title)
+        {
+            int genreHold;
+            if ((int)genre.combinedGenre == (int)title._GenreType)
+            {
+                genreHold = (int)genre.combinedGenre;
+            }
+            else
+            {
+                genreHold = (int)genre.combinedGenre + (int)title._GenreType;
+            }
+            return new Genre((Genre.CombinedGenreType)genreHold);
+        }
+        //public static Genre operator+ (Genre genreOne, Genre genreTwo) //issue with this one is we can't use titles titlelist
+        //{
+        //    if (genreOne.combinedGenreType.Equals(genreTwo.combinedGenreType))
+        //    {
+        //        return new Genre(genreOne.combinedGenreType);
+        //    }
+        //    int combinedGenreType = (int)genreOne.combinedGenreType + (int)genreTwo.combinedGenreType;
+
+        //    switch (combinedGenreType)
+        //    {
+        //        case (3):
+        //            //strip each one 
+
+        //        case (5):
+        //            return genreOne;
+        //        case (6):
+        //            return genreOne;
+        //        case (7):
+        //            return genreOne;
+        //        default:
+        //            return genreOne;
+        //    }
+        //}
+        //public static Genre operator+ (Genre genre, Title title)
+        //    //ISSUE: one of the parameters has to be of the class, but can't give a title to a <T> class
+        //{
+        //    if ((int)genre.combinedGenreType == (int)title._GenreType)
+        //    {
+        //        genre.AddTitles(title);
+        //        return genre;
+        //    }
+        //    int combinedGenreType = (int)genre.combinedGenreType + (int)title._GenreType;
+
+        //    switch (combinedGenreType)
+        //    {
+        //        case (3):
+        //            //Add the title and each title within the genre to the new genre
+        //            return title.TitleList.romaction;
+        //        case (5):
+        //            return title.TitleList.romcom;
+        //        case (6):
+        //            return title.TitleList.comaction;
+        //        case (7):
+        //            return title.TitleList.all;
+        //        default:
+        //            return title.TitleList.all;
+        //    }
+        //}
     }
 }

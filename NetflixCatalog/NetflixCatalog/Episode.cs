@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NetflixCatalog
 {
-    class Episode
+    public class Episode
     {
         double rating;
         string name;
@@ -18,7 +18,7 @@ namespace NetflixCatalog
         }
         public double Rating
         {
-            get;
+            get { return rating; }
         }
     }
 }

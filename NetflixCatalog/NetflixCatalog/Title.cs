@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace NetflixCatalog
 {
-    abstract class Title
+    public abstract class Title
     {
-        TemporaryTitleList titleList = new TemporaryTitleList();
         protected string _name;
         protected double? _rating;
         protected GenreType? _genreType;
@@ -33,38 +32,58 @@ namespace NetflixCatalog
             _rating = rating;
             _genreType = genreType;
         }
-        public static Genre<Title> operator+ (Title titleOne, Title titleTwo)
+        public GenreType _GenreType
         {
+            get { return (GenreType)_genreType; }
+        } 
+        public string _Name
+        {
+            get { return _name; }
+        }
+        public static Genre operator+ (Title titleOne, Title titleTwo)
+        {
+            int genreHold;
             if (titleOne._genreType == titleTwo._genreType)
             {
-                int genreHold = (int)titleOne._genreType;
-                string enumString = Enum.GetName(typeof(Genre<Title>.CombinedGenreType), genreHold);
-                Genre<Title>.CombinedGenreType enumName = 
-                    (Genre<Title>.CombinedGenreType)Enum.Parse(typeof(Genre<Title>.CombinedGenreType), enumString);
-                return new Genre<Title>(enumName);
-            } 
-
-            int combinedGenreType = (int)titleOne._genreType + (int)titleTwo._genreType;
-            switch (combinedGenreType)
+                genreHold = (int)titleOne._genreType;
+            } else
             {
-                case (3):
-                    titleOne.titleList.romaction.AddTitles(titleOne);
-                    titleOne.titleList.romaction.AddTitles(titleTwo);
-                    return titleOne.titleList.romaction;
-                case (5):
-                    titleOne.titleList.romcom.AddTitles(titleOne);
-                    titleOne.titleList.romcom.AddTitles(titleTwo);
-                    return titleOne.titleList.romcom;
-                case (6):
-                    titleOne.titleList.comaction.AddTitles(titleOne);
-                    titleOne.titleList.comaction.AddTitles(titleTwo);
-                    return titleOne.titleList.comaction;
-                default:
-                    titleOne.titleList.all.AddTitles(titleOne);
-                    titleOne.titleList.all.AddTitles(titleTwo);
-                    return titleOne.titleList.all;
+                genreHold = (int)titleOne._genreType + (int)titleTwo._genreType;
             }
-
+            return new Genre((Genre.CombinedGenreType)genreHold);
         }
+        //public static Genre operator+ (Title titleOne, Title titleTwo)
+        //{
+        //    if (titleOne._genreType == titleTwo._genreType)
+        //    {
+        //        int genreHold = (int)titleOne._genreType;
+        //        string enumString = Enum.GetName(typeof(Genre.CombinedGenreType), genreHold);
+        //        Genre.CombinedGenreType enumName = 
+        //            (Genre.CombinedGenreType)Enum.Parse(typeof(Genre.CombinedGenreType), enumString);
+        //        return new Genre(enumName);
+        //    } 
+
+        //    int combinedGenreType = (int)titleOne._genreType + (int)titleTwo._genreType;
+        //    switch (combinedGenreType)
+        //    {
+        //        case (3):
+        //            titleOne._titleList.romaction.AddTitles(titleOne);
+        //            titleOne._titleList.romaction.AddTitles(titleTwo);
+        //            return titleOne._titleList.romaction;
+        //        case (5):
+        //            titleOne._titleList.romcom.AddTitles(titleOne);
+        //            titleOne._titleList.romcom.AddTitles(titleTwo);
+        //            return titleOne._titleList.romcom;
+        //        case (6):
+        //            titleOne._titleList.comaction.AddTitles(titleOne);
+        //            titleOne._titleList.comaction.AddTitles(titleTwo);
+        //            return titleOne._titleList.comaction;
+        //        default:
+        //            titleOne._titleList.all.AddTitles(titleOne);
+        //            titleOne._titleList.all.AddTitles(titleTwo);
+        //            return titleOne._titleList.all;
+        //    }
+
+        //}
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NetflixCatalog
 {
-    class TemporaryTitleList
+    public class TemporaryTitleList
     {
         //movies
         public Movie dieHard = new Movie("Die Hard", 2, Title.GenreType.Action, 120);
@@ -31,15 +31,6 @@ namespace NetflixCatalog
         public Episode dare1 = new Episode(2, "Epi One");
         public Episode dare2 = new Episode(3, "Epi Two");
         public Episode dare3 = new Episode(5, "Epi Three");
-
-        public Genre<Title> romance = new Genre<Title>(Genre<Title>.CombinedGenreType.Romance);
-        public Genre<Title> action = new Genre<Title>(Genre<Title>.CombinedGenreType.Action);
-        public Genre<Title> romaction = new Genre<Title>(Genre<Title>.CombinedGenreType.Romaction);
-        public Genre<Title> comedy = new Genre<Title>(Genre<Title>.CombinedGenreType.Comedy);
-        public Genre<Title> romcom = new Genre<Title>(Genre<Title>.CombinedGenreType.RomCom);
-        public Genre<Title> comaction = new Genre<Title>(Genre<Title>.CombinedGenreType.ComAction);
-        public Genre<Title> all = new Genre<Title>(Genre<Title>.CombinedGenreType.All);
-
         public TemporaryTitleList()
         {
         }

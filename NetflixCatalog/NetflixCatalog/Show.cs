@@ -6,15 +6,24 @@ using System.Threading.Tasks;
 
 namespace NetflixCatalog
 {
-    class Show:Title
+    public class Show:Title
     {
         List<Episode> episodeList;
         public Show (string name, double rating, GenreType genreType) : base (name, rating, genreType)
         {
-            _name = name;
-            _rating = rating;
-            _genreType = genreType;
             episodeList = new List<Episode>();
+        }
+        public Show()
+        {
+
+        }
+        public List<Episode> EpisodeList
+        {
+            get { return episodeList; }
+        }
+        public string Name
+        {
+            get { return _name; }
         }
         public void AddEpisode(Episode newEpisode)
         {
@@ -29,13 +38,13 @@ namespace NetflixCatalog
                 {
                     ratingHold += episode.Rating;
                 }
-                _rating = ratingHold;
+                _rating = ratingHold/episodeList.Count;
             }
+            get { return (double)_rating; }
         } 
         public override string ToString()
         {
-            string showNameAndNumberOfEpisodes = _name + episodeList.Count;
-            return showNameAndNumberOfEpisodes;
+            return string.Format("{0}, {1} episodes", _name, episodeList.Count);
         }
     }
 }

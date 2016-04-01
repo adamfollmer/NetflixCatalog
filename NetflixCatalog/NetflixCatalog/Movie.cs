@@ -6,16 +6,24 @@ using System.Threading.Tasks;
 
 namespace NetflixCatalog
 {
-    class Movie:Title
+    public class Movie:Title
     {
         int? duration;
         public Movie(string name, double rating, GenreType genreType, int duration) 
             : base (name, rating, genreType)
         {
-            _name = name;
-            _rating = rating;
-            _genreType = genreType;
             this.duration = duration;
+        }
+        public Movie()
+        {
+
+        }
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
         }
         public override string ToString()
         {
