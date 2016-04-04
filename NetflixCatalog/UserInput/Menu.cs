@@ -35,9 +35,9 @@ namespace UserInput
         {
             Console.WriteLine("Please select an option\n");
             Console.WriteLine("1. Add movie");
-            Console.WriteLine("2. Add null movie");
+            Console.WriteLine("2. Print All Movies");
             Console.WriteLine("3. Add show");
-            Console.WriteLine("4. Add null show");
+            Console.WriteLine("4. Print All Shows");
             Console.WriteLine("5. Add episode to show");
             Console.WriteLine("6. Combine two titles");
             Console.WriteLine("7. Combine two genres");
@@ -68,7 +68,7 @@ namespace UserInput
                     return NumbersOnlyCheck(exitOption, lowEnd, highEnd);
                 }
             }
-            return userChoice;//worried about the recycle
+            return userChoice;
         }
         public void SwitchForMenuChoice(int validMenuChoice)
         {
@@ -78,15 +78,16 @@ namespace UserInput
                     viewMenu.AddMovieToMovieList(userMovie.CreateMovie());
                     break;
                 case 2:
-                    viewMenu.AddMovieToMovieList(new Movie());
+                    userMovie.PrintMovie();
                     break;
                 case 3:
                     viewMenu.AddShowtoShowList(userShow.CreateShow());
                     break;
                 case 4:
-                    viewMenu.AddShowtoShowList(new Show());
+                    userShow.PrintShowAndEpisode();
                     break;
                 case 5:
+                    userShow.PrintShow();
                     Show holdShow = userShow.SelectShow();
                     Episode holdEpisode = userShow.CreateEpisode();
                     holdShow.AddEpisode(holdEpisode);
@@ -106,7 +107,7 @@ namespace UserInput
                     Genre genre1 = userGenre.SelectGenre();
                     userGenre.PrintGenre();
                     Genre genre2 = userGenre.SelectGenre();
-                    viewMenu.AddTitlesToAggregatedGenre(genre1, genre1);
+                    viewMenu.AddTitlesToAggregatedGenre(genre1, genre2);
                     Console.Write("{0} and {1} added to ", genre1.CombinedGenre, genre2.CombinedGenre);
                     viewMenu.AddGenreToGenreList(genre1 + genre2);
                     break;
@@ -115,6 +116,7 @@ namespace UserInput
                     Genre genre = userGenre.SelectGenre();
                     userTitle.PrintTitle();
                     Title title = userTitle.SelectTitle();
+                    viewMenu.AddTitlesToAggregatedGenre(title, genre);
                     Console.Write("{0} and {1} added to ", title._Name, genre.CombinedGenre);
                     viewMenu.AddGenreToGenreList(genre + title);
                     break;

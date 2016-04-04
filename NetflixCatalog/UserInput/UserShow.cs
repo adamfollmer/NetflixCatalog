@@ -34,9 +34,24 @@ namespace UserInput
                 i++;
             }
         }
+        public void PrintShowAndEpisode()
+        {
+            int i = 1;
+            foreach(Show show in menu.ShowList)
+            {
+                show.Rating = show.Rating;
+                Console.WriteLine("{0}. {1}", i, show.ToString());
+                Console.WriteLine("Rating: {0}", show.Rating.ToString("#.00"));
+                foreach(Episode episode in show.EpisodeList)
+                {
+                    Console.WriteLine("Episode Name: {0}, Rating: {1}", episode.Name, episode.Rating);
+                }
+                i++;
+            }
+        }
         public Show SelectShow()
         {
-            int selectedShow = userMenu.NumbersOnlyCheck(5654, 1, menu.ShowList.Count);
+            int selectedShow = userMenu.NumbersOnlyCheck(5654, 1, menu.ShowList.Count)-1;
             return menu.ShowList.ElementAt(selectedShow);
         }
         public Episode CreateEpisode()

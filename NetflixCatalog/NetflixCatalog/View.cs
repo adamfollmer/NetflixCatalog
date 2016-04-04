@@ -73,25 +73,48 @@ namespace NetflixCatalog
         }
         public void AddMovieToMovieList(Movie movie)
         {
-            movieList.Add(movie);
-            masterTitleList.Add(movie);
-            AddTitleToGenre(movie);
-            Console.WriteLine("{0} added to {1} genre", movie.Name, movie._GenreType);
+            if (!movieList.Contains(movie))
+            {
+                movieList.Add(movie);
+                masterTitleList.Add(movie);
+                AddTitleToGenre(movie);
+                Console.WriteLine("{0} added to {1} genre", movie.Name, movie._GenreType);
+            }
+            else
+            {
+                Console.WriteLine("{0} already exists in {0} genre", movie.Name, movie._GenreType);
+            }
+
         }
         public void AddShowtoShowList(Show show)
         {
-            showList.Add(show);
-            masterTitleList.Add(show);
-            AddTitleToGenre(show);
-            Console.WriteLine("{0} added to {1} genre", show.Name, show._GenreType);
+            if (!showList.Contains(show))
+            {
+                showList.Add(show);
+                masterTitleList.Add(show);
+                AddTitleToGenre(show);
+                Console.WriteLine("{0} added to {1} genre", show.Name, show._GenreType);
+            }
+            else
+            {
+                Console.WriteLine("{0} already exists in {0} genre", show.Name, show._GenreType);
+            }
+
         }
         public void PrintGenre(Genre genre)
         {
             Console.WriteLine("Viewing results for {0}", genre.CombinedGenre);
-            foreach (Title title in genre)
+            foreach (Genre genreInList in genreList)
             {
-                Console.WriteLine(title.ToString());
+                if (genre.CombinedGenre == genreInList.CombinedGenre)
+                {
+                    foreach (Title title in genreInList)
+                    {
+                        Console.WriteLine(title.ToString());
+                    }
+                }
             }
+
         }
         public void AddGenreToGenreList(Genre genre)
         {
@@ -130,11 +153,16 @@ namespace NetflixCatalog
                     {
                         allGenre.AddTitles(title);
                     }
+                }
+            }
+            foreach (Genre allGenre in GenreList)
+            {
+                if (allGenre.CombinedGenre == (genre1 + genre2).CombinedGenre)
+                {
                     foreach (Title title in genre2)
                     {
                         allGenre.AddTitles(title);
                     }
-                    break;
                 }
             }
         }
@@ -145,14 +173,14 @@ namespace NetflixCatalog
             {
                 if (allGenre.CombinedGenre == (genre + title).CombinedGenre)
                 {
-                    foreach(Title genreTitle in genre)
+                    foreach (Title genreTitle in genre)
                     {
                         allGenre.AddTitles(genreTitle);
                     }
                     allGenre.AddTitles(title);
                     break;
                 }
-                
+
             }
         }
     }
