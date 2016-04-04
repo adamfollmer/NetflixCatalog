@@ -100,7 +100,7 @@ namespace UserInput
                     Title title2 = userTitle.SelectTitle();
                     viewMenu.AddTitlesToAggregatedGenre(title1, title2);
                     Console.Write("{0} and {1} added to ",title1._Name, title2._Name );
-                    viewMenu.AddGenreToGenreList(title1 + title2);
+                    Console.WriteLine("{0}\n", (title1+title2).CombinedGenre);
                     break;
                 case 7:
                     userGenre.PrintGenre();
@@ -109,7 +109,7 @@ namespace UserInput
                     Genre genre2 = userGenre.SelectGenre();
                     viewMenu.AddTitlesToAggregatedGenre(genre1, genre2);
                     Console.Write("{0} and {1} added to ", genre1.CombinedGenre, genre2.CombinedGenre);
-                    viewMenu.AddGenreToGenreList(genre1 + genre2);
+                    Console.WriteLine("{0}\n", (genre1 + genre2).CombinedGenre);
                     break;
                 case 8:
                     userGenre.PrintGenre();
@@ -118,7 +118,7 @@ namespace UserInput
                     Title title = userTitle.SelectTitle();
                     viewMenu.AddTitlesToAggregatedGenre(title, genre);
                     Console.Write("{0} and {1} added to ", title._Name, genre.CombinedGenre);
-                    viewMenu.AddGenreToGenreList(genre + title);
+                    Console.WriteLine("{0}\n", (genre + title).CombinedGenre);
                     break;
                 case 9:
                     userGenre.PrintGenre();

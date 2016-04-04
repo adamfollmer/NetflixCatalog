@@ -116,11 +116,6 @@ namespace NetflixCatalog
             }
 
         }
-        public void AddGenreToGenreList(Genre genre)
-        {
-            genreList.Add(genre);
-            Console.Write("{0} genre\n", genre.CombinedGenre);
-        }
         public void AddTitleToGenre(Title title)
         {
             foreach (Genre genre in genreList)
