@@ -18,7 +18,13 @@ namespace UserInput
         }
         public Movie CreateMovie()
         {
-            return new Movie();
+            string newMovieTitle = userMenu.GetUserInputTitle();
+            Console.WriteLine("Please enter in the rating (1-5) for the movie");
+            double newMovieRating = (double)userMenu.NumbersOnlyCheck(1092, 0, 6);
+            Console.WriteLine("Please enter in the length of the movie in minutes");
+            int newMovieDuration = userMenu.NumbersOnlyCheck(5804, 0, 181);
+            Title.GenreType newMovieGenreType = userMenu.GetGenreType();
+            return new Movie(newMovieTitle, newMovieRating, newMovieGenreType, newMovieDuration);
         }
         public void PrintMovie()
         {

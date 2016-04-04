@@ -68,53 +68,5 @@ namespace NetflixCatalog
             }
             return new Genre((Genre.CombinedGenreType)genreHold);
         }
-        //public static Genre operator+ (Genre genreOne, Genre genreTwo) //issue with this one is we can't use titles titlelist
-        //{
-        //    if (genreOne.combinedGenreType.Equals(genreTwo.combinedGenreType))
-        //    {
-        //        return new Genre(genreOne.combinedGenreType);
-        //    }
-        //    int combinedGenreType = (int)genreOne.combinedGenreType + (int)genreTwo.combinedGenreType;
-
-        //    switch (combinedGenreType)
-        //    {
-        //        case (3):
-        //            //strip each one 
-
-        //        case (5):
-        //            return genreOne;
-        //        case (6):
-        //            return genreOne;
-        //        case (7):
-        //            return genreOne;
-        //        default:
-        //            return genreOne;
-        //    }
-        //}
-        //public static Genre operator+ (Genre genre, Title title)
-        //    //ISSUE: one of the parameters has to be of the class, but can't give a title to a <T> class
-        //{
-        //    if ((int)genre.combinedGenreType == (int)title._GenreType)
-        //    {
-        //        genre.AddTitles(title);
-        //        return genre;
-        //    }
-        //    int combinedGenreType = (int)genre.combinedGenreType + (int)title._GenreType;
-
-        //    switch (combinedGenreType)
-        //    {
-        //        case (3):
-        //            //Add the title and each title within the genre to the new genre
-        //            return title.TitleList.romaction;
-        //        case (5):
-        //            return title.TitleList.romcom;
-        //        case (6):
-        //            return title.TitleList.comaction;
-        //        case (7):
-        //            return title.TitleList.all;
-        //        default:
-        //            return title.TitleList.all;
-        //    }
-        //}
     }
 }

@@ -27,7 +27,7 @@ namespace UserInput
         }
         public Title SelectTitle()
         {
-            int selectedTitle = userMenu.NumbersOnlyCheck(8956, 1, menu.MasterTitleList.Count);
+            int selectedTitle = userMenu.NumbersOnlyCheck(8956, 1, menu.MasterTitleList.Count)-1;
             return menu.MasterTitleList.ElementAt(selectedTitle);
         }
     }

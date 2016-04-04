@@ -31,6 +31,14 @@ namespace NetflixCatalog
         public Episode dare1 = new Episode(2, "Epi One");
         public Episode dare2 = new Episode(3, "Epi Two");
         public Episode dare3 = new Episode(5, "Epi Three");
+
+        public Genre romance = new Genre(Genre.CombinedGenreType.Romance);
+        public Genre action = new Genre(Genre.CombinedGenreType.Action);
+        public Genre comedy = new Genre(Genre.CombinedGenreType.Comedy);
+        public Genre romaction = new Genre(Genre.CombinedGenreType.Romaction);
+        public Genre romcom = new Genre(Genre.CombinedGenreType.RomCom);
+        public Genre comaction = new Genre(Genre.CombinedGenreType.ComAction);
+        public Genre all = new Genre(Genre.CombinedGenreType.All);
         public TemporaryTitleList()
         {
         }
@@ -46,6 +54,16 @@ namespace NetflixCatalog
             daredevil.AddEpisode(dare1);
             daredevil.AddEpisode(dare2);
             daredevil.AddEpisode(dare3);
+        }
+        public void AddShowsToGenre()
+        {
+            comedy.AddTitles(theOffice);
+            romance.AddTitles(greys);
+            action.AddTitles(daredevil);
+            action.AddTitles(dieHard);
+            action.AddTitles(dieHard2);
+            comedy.AddTitles(officeSpace);
+            romance.AddTitles(notebook);
         }
 
 

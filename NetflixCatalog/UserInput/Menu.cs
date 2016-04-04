@@ -23,8 +23,13 @@ namespace UserInput
         }
         public void RunProgram()
         {
-            PrintMainMenu();
-            SwitchForMenuChoice(NumbersOnlyCheck(10, 1, 10));
+            viewMenu.AddPremadeGenresToGenreList();
+            viewMenu.AddPremadeTitlesToLists();
+            while (true)
+            {
+                PrintMainMenu();
+                SwitchForMenuChoice(NumbersOnlyCheck(10, 1, 10));
+            } 
         }
         public void PrintMainMenu()
         {
@@ -85,12 +90,15 @@ namespace UserInput
                     Show holdShow = userShow.SelectShow();
                     Episode holdEpisode = userShow.CreateEpisode();
                     holdShow.AddEpisode(holdEpisode);
+                    Console.WriteLine("{0} added to {1}", holdEpisode.Name, holdShow.Name);
                     break;
                 case 6:
                     userTitle.PrintTitle();
                     Title title1 = userTitle.SelectTitle();
                     userTitle.PrintTitle();
                     Title title2 = userTitle.SelectTitle();
+                    viewMenu.AddTitlesToAggregatedGenre(title1, title2);
+                    Console.Write("{0} and {1} added to ",title1._Name, title2._Name );
                     viewMenu.AddGenreToGenreList(title1 + title2);
                     break;
                 case 7:
@@ -98,6 +106,8 @@ namespace UserInput
                     Genre genre1 = userGenre.SelectGenre();
                     userGenre.PrintGenre();
                     Genre genre2 = userGenre.SelectGenre();
+                    viewMenu.AddTitlesToAggregatedGenre(genre1, genre1);
+                    Console.Write("{0} and {1} added to ", genre1.CombinedGenre, genre2.CombinedGenre);
                     viewMenu.AddGenreToGenreList(genre1 + genre2);
                     break;
                 case 8:
@@ -105,16 +115,43 @@ namespace UserInput
                     Genre genre = userGenre.SelectGenre();
                     userTitle.PrintTitle();
                     Title title = userTitle.SelectTitle();
+                    Console.Write("{0} and {1} added to ", title._Name, genre.CombinedGenre);
                     viewMenu.AddGenreToGenreList(genre + title);
                     break;
                 case 9:
                     userGenre.PrintGenre();
+                    viewMenu.PrintGenre(userGenre.SelectGenre());
+
                     break;
                 case 10:
                     Environment.Exit(1);
                     break;
                 default:
                     break;
+            }
+        }
+        public string GetUserInputTitle()
+        {
+            Console.WriteLine("Please enter in the title");
+            return Console.ReadLine();
+        }
+        public void PrintGenreOptions()
+        {
+            Console.WriteLine("Select a genre for title:");
+            Console.Write("1. Romance\n2. Action\n3. Comedy\n");
+        }
+        public Title.GenreType GetGenreType()
+        {
+            PrintGenreOptions();
+            int genreTypeHold = NumbersOnlyCheck(4849, 0, 4);
+            switch (genreTypeHold)
+            {
+                case 1:
+                    return Title.GenreType.Romance;
+                case 2:
+                    return Title.GenreType.Action;
+                default:
+                    return Title.GenreType.Comedy;
             }
         }
     }

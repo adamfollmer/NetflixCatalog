@@ -20,5 +20,9 @@ namespace NetflixCatalog
         {
             get { return rating; }
         }
+        public string Name
+        {
+            get { return name; }
+        }
     }
 }

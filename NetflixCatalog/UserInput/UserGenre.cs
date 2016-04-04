@@ -25,5 +25,10 @@ namespace UserInput
                 i++;
             }
         }
+        public Genre SelectGenre()
+        {
+            int selectedGenre = userMenu.NumbersOnlyCheck(8956, 1, menu.GenreList.Count)-1;
+            return menu.GenreList.ElementAt(selectedGenre);
+        }
     }
 }

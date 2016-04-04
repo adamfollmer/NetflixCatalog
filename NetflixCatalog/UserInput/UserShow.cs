@@ -18,7 +18,12 @@ namespace UserInput
         }
         public Show CreateShow()
         {
-            return new Show();
+            string newShowTitle = userMenu.GetUserInputTitle();
+            Console.WriteLine("Please enter in the rating (1-5) for the movie");
+            double newShowRating = (double)userMenu.NumbersOnlyCheck(1092, 0, 6);
+            Console.WriteLine("Please enter in the length of the movie in minutes");
+            Title.GenreType newMovieGenreType = userMenu.GetGenreType();
+            return new Show(newShowTitle, newShowRating, newMovieGenreType);
         }
         public void PrintShow()
         {
@@ -36,8 +41,9 @@ namespace UserInput
         }
         public Episode CreateEpisode()
         {
-            Console.WriteLine("Enter in the episode name, then a rating 1-5");
+            Console.WriteLine("Enter in the episode name");
             string episodeName = Console.ReadLine();
+            Console.WriteLine("Enter in a rating, 1-5");
             int rating = userMenu.NumbersOnlyCheck(56865, 1, 5);
             return new Episode(rating, episodeName);
         }
